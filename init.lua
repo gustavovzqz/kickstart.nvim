@@ -171,6 +171,7 @@ require('lazy').setup({
   },
 
   {
+    -- Precisa do Pynvim.
     'whonore/Coqtail',
   },
   {
