@@ -171,6 +171,9 @@ require('lazy').setup({
   },
 
   {
+    'whonore/Coqtail',
+  },
+  {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
     ft = { 'markdown' },
@@ -179,6 +182,24 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'tjdevries/ocaml.nvim',
+    config = function()
+      require('ocaml').setup()
+
+      -- LSP
+      require('lspconfig').ocamllsp.setup {
+        get_language_id = function(_, ftype)
+          return ftype
+        end,
+      }
+      -- Mapping to update types
+      vim.keymap.set('n', '<leader>out', require('ocaml.actions').update_interface_type, { desc = '[O]caml [U]pdate [T]ype' })
+    end,
+    requires = {
+      'neovim/nvim-lspconfig',
+    },
+  },
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
