@@ -109,6 +109,13 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Mapeamentos para símbolos lógicos
+vim.api.nvim_set_keymap('i', '\\fa', '∀', { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap('i', '\\ex', '∃', { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap('i', '\\to', '→', { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap('i', '\\and', '∧', { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap('i', '\\or', '∨', { noremap = true, silent = true, expr = false })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -174,6 +181,24 @@ require('lazy').setup({
     -- Precisa do Pynvim.
     'whonore/Coqtail',
   },
+
+  {
+    'Julian/lean.nvim',
+    event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+    dependencies = {
+      'neovim/nvim-lspconfig',
+      'nvim-lua/plenary.nvim',
+      -- you also will likely want nvim-cmp or some completion engine
+    },
+
+    -- see details below for full configuration options
+    opts = {
+      lsp = {},
+      mappings = true,
+    },
+  },
+
   {
     'iamcco/markdown-preview.nvim',
     cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
