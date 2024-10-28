@@ -176,10 +176,21 @@ require('lazy').setup({
       vim.keymap.set('n', '<space>-', require('oil').toggle_float)
     end,
   },
-
   {
-    -- Precisa do Pynvim.
-    'whonore/Coqtail',
+    'tomtomjhj/coq-lsp.nvim',
+    dependencies = { 'neovim/nvim-lspconfig', 'whonore/Coqtail' },
+    config = function()
+      -- Configuração para o coq-lsp.nvim
+      require('coq-lsp').setup {
+        coq_lsp_nvim = {},
+        lsp = {
+
+          init_options = {
+            show_notices_as_diagnostics = true,
+          },
+        },
+      }
+    end,
   },
 
   {
