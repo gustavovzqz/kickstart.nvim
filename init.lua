@@ -162,6 +162,15 @@ require('lazy').setup({
         },
       }
 
+      require('nvim-web-devicons').set_icon {
+        v = {
+          icon = '🐓',
+          color = '#428850',
+          cterm_color = '65',
+          name = 'Coq',
+        },
+      }
+
       -- Open parent directory in current window
       vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
