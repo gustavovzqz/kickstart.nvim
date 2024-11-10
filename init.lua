@@ -181,6 +181,7 @@ require('lazy').setup({
           init_options = {
             show_notices_as_diagnostics = true,
           },
+          autostart = false,
         },
       }
     end,
