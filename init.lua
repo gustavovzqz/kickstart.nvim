@@ -197,6 +197,11 @@ require('lazy').setup({
   },
 
   {
+    'wakatime/vim-wakatime',
+    lazy = false,
+  },
+
+  {
     'Julian/lean.nvim',
     event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 
